@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hospital_Sim_New", "Hospital_Sim_New.vcxproj", "{371D44D1-294C-42F4-A1AB-7BCF637A1ED0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{371D44D1-294C-42F4-A1AB-7BCF637A1ED0}.Debug|x64.ActiveCfg = Debug|x64
+		{371D44D1-294C-42F4-A1AB-7BCF637A1ED0}.Debug|x64.Build.0 = Debug|x64
+		{371D44D1-294C-42F4-A1AB-7BCF637A1ED0}.Debug|x86.ActiveCfg = Debug|Win32
+		{371D44D1-294C-42F4-A1AB-7BCF637A1ED0}.Debug|x86.Build.0 = Debug|Win32
+		{371D44D1-294C-42F4-A1AB-7BCF637A1ED0}.Release|x64.ActiveCfg = Release|x64
+		{371D44D1-294C-42F4-A1AB-7BCF637A1ED0}.Release|x64.Build.0 = Release|x64
+		{371D44D1-294C-42F4-A1AB-7BCF637A1ED0}.Release|x86.ActiveCfg = Release|Win32
+		{371D44D1-294C-42F4-A1AB-7BCF637A1ED0}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7669BA6A-A27D-400F-8A4C-31C93F2ED1A7}
+	EndGlobalSection
+EndGlobal

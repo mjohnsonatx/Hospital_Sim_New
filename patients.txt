@@ -1,0 +1,57 @@
+1
+Michael Johnson
+33
+160
+Morphine
+Hives
+Tylenol
+Swelling 
+Asprin
+324 mg po AM
+Trazadone
+50 mg po pm
+
+2
+John James
+65
+175
+Narcan
+stopped breathing
+geodon
+pyschosis
+Lamictal
+unk
+Zanax
+2 mh po q4 prn
+
+3
+Stephanie Cane
+26
+115
+Epi
+high heart rate
+Latex
+rash
+advil 
+500 mg po 
+birth control
+implant
+
+4
+John Doe
+40
+140
+shellfish
+swelling
+peanut
+hives
+nitro
+0.4 mg sl 
+tramadol
+50 mg q 4 prn 
+
+
+
+
+
+
