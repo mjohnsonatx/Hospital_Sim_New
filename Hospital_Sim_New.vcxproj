@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Hospital_Sim_New.cpp" />
     <ClCompile Include="Patient.cpp" />
+    <ClCompile Include="menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
