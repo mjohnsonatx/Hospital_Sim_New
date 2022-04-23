@@ -24,7 +24,7 @@ int Menu::patient_Search( std::vector<Patient>& input) {
 			std::string name;
 			std::string answer;
 
-			// get name of patient to search// should switch to a list on the console.
+			// get name of patient to search
 			std::cout << "Please enter the first and last name of the patient:" << std::endl;
 			std::getline(std::cin >> std::ws, name);
 

@@ -14,40 +14,46 @@ void File::fileIO(std::string path, std::vector<Patient>& input ) {
         std::cout << "********INPUT FILE FAILED TO OPEN********";
     else {
 
-        std::string j, k, m, n, name; // for file input.
+        // variables for file input.
+        std::string 
+            allergy, 
+            reaction, 
+            medication, 
+            dosage, 
+            name;
 
         int id = 0,
-            p = 0;
+            age = 0;
 
-        double o = 0.0;
+        double weight = 0.0;
 
         while (fin >> id) {
 
             Patient newPatient;
 
             getline(fin >> std::ws, name);
-            fin >> std::ws >> p;
-            fin >> std::ws >> o;
+            fin >> std::ws >> age;
+            fin >> std::ws >> weight;
 
             newPatient.setName(name);
             newPatient.setId(id);
-            newPatient.setAge(p);
-            newPatient.setWeight(o);
+            newPatient.setAge(age);
+            newPatient.setWeight(weight);
 
 
             for (int i = 0; i < 2; i++) {
 
-                std::getline(fin >> std::ws, j);
-                std::getline(fin >> std::ws, k);
+                std::getline(fin >> std::ws, allergy);
+                std::getline(fin >> std::ws, reaction);
 
-                newPatient.setAllergies(j, k);
+                newPatient.setAllergies(allergy, reaction);
             }
             for (int i = 0; i < 2; i++) {
 
-                getline(fin >> std::ws, m);
-                getline(fin >> std::ws, n);
+                getline(fin >> std::ws, medication);
+                getline(fin >> std::ws, dosage);
 
-                newPatient.setDailyMeds(m, n);
+                newPatient.setDailyMeds(medication, dosage);
             }
             input.push_back(newPatient);
         }
