@@ -50,12 +50,12 @@ public:
     void removeDailyMed(int);
     void amend_allergy(int, std::string sub, std::string reaction);
 
-    std::string getName()const { return name; }
-    std::string getDOB()const { return DOB; }
-    double getWeight()const { return weight_lbs; }
-    int getAge()const { return age; }
-    int getAllergies_counter()const { return allergies_counter;} 
-    int getDailyMeds()const { return num_meds; }
-    int getId() const { return iD; }
+    inline std::string getName()const { return name; }
+    inline std::string getDOB()const { return DOB; }
+    inline double getWeight()const { return weight_lbs; }
+    inline int getAge()const { return age; }
+    inline int getAllergies_counter()const { return allergies_counter;} 
+    inline int getDailyMeds()const { return num_meds; }
+    inline int getId() const { return iD; }
     
 };

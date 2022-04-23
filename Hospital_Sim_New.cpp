@@ -12,24 +12,69 @@
 #include "string"
 #include <vector>
 #include <algorithm>
+#include <random>
 
 int main()
 {
-    int num_patients = 0, 
-        index = 0;
-    
+    std::vector<std::string> names_list;
+    std::vector<std::string>meds_list;
     std::vector<Patient> patientDataBase;
     Menu menu;
     File file;
-
-    bool more = false;
-
-    int l,
-        choice;
-    double h;
+    
+    auto index = 0,
+         choice = 0;
 
     std::string path = "patients.txt";
+    std::string names_path = "names.txt";
+    std::string meds_file = "medications.txt";
 
+
+    //create list of names and meds
+    names_list=file.getNames(names_path);
+    meds_list = file.getMeds(meds_file);
+
+    //generate random names and push them into the patientDataBase
+    int min = 0, max = 1000, max2 = 4;
+
+    std::random_device rd;
+    std::mt19937 rng(rd());
+    std::uniform_int_distribution<int> uni(min, max);
+    int counter = 0;
+    
+    while (counter < 5000) {
+        auto random_int = uni(rng);
+        std::string space = " ";
+        std::string newName_first = names_list[random_int];
+
+        random_int = uni(rng);
+        std::string newName_last = names_list[random_int];
+        std::string newName = newName_first + space + newName_last;
+        //std::cout << newName << "  ";
+
+        Patient patient;
+        patient.setName(newName);
+
+        // make random number of meds per patient
+        std::uniform_int_distribution<int> uni(min, max2);
+        auto random_num_meds = uni(rng);
+        
+        while (random_num_meds != 0) {
+            
+            int max3 = 30;
+            std::uniform_int_distribution<int> uni(min, max3);
+            auto random_med = uni(rng);
+            
+            std::string patient_meds = meds_list[random_med];
+            
+            patient.setDailyMeds(patient_meds, "");
+            --random_num_meds;
+        }
+        patientDataBase.push_back(patient);
+        ++counter;  
+    } 
+    
+    // create list of patients
     file.fileIO(path, patientDataBase);
 
     do {

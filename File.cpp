@@ -6,6 +6,50 @@
 #include <fstream>
 
 
+std::vector<std::string> File::getMeds(std::string path) {
+    
+    std::vector<std::string> meds;
+
+    std::ifstream fin;
+    fin.open(path);
+
+    if (!fin)
+        std::cout << "********INPUT FILE FAILED TO OPEN********";
+    else {
+
+        std::string med;
+
+        while (fin >> med) {  
+            getline(fin >> std::ws, med);
+            meds.push_back(med);
+        }
+    }
+    fin.close();
+    return meds;
+}
+
+std::vector<std::string> File::getNames(std::string path) {
+    
+    std::vector<std::string> names_list;
+
+    std::ifstream fin;
+    fin.open(path);
+
+    if (!fin)
+        std::cout << "********INPUT FILE FAILED TO OPEN********";
+    else {
+        
+        std::string name;
+
+        while (fin >> name) {
+            getline(fin >> std::ws, name);
+            names_list.push_back(name);
+        }
+    }
+    fin.close();
+    return names_list;
+}
+
 void File::fileIO(std::string path, std::vector<Patient>& input ) {
     std::ifstream fin;
     fin.open(path);
