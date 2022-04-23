@@ -41,7 +41,8 @@ int main()
             << "5. Display patient demographics. \n"
             << "6. Display patient allergies.\n"
             << "7. Display home medication(s).\n"
-            << "8. Exit the program.\n";
+            << "8. Print everything.\n"
+            << "9.) Exit the program.\n";
         std::cin >> choice;
 
         while (choice < 1 || choice > 8)
@@ -51,6 +52,8 @@ int main()
         }
 
         switch (choice) {
+            
+            //search for patients
             case 1:
             {
                 index = menu.patient_Search(patientDataBase);
@@ -58,12 +61,15 @@ int main()
                 break;
             }
 
+            //add patient(s)
             case 2:
             {
                 menu.add_Patient(patientDataBase);
 
                 break;
             }
+            
+            //amend patient allergies
             case 3:
             {
 
@@ -72,50 +78,49 @@ int main()
                 break;
             }
             
-            case 4: //// add functionality for removing meds and ammending meds.
+            // amend patient medications
+            case 4: 
             {
                 
-                /// <summary>
-                /// NOT COMPLETED
-                /// </summary>
-                /// <returns></returns>
+                menu.add_amend_medications(patientDataBase);
+
                 break;
             }
 
+            // list patient demographics
             case 5:
             {
-                std::cout << "Number of patient counter: " << num_patients << std::endl << std::endl;
-                for (auto& i:patientDataBase) {
-                    std::cout << "Patient Name: " << i.getName()
-                        << "\nPatient Age: " << i.getAge()
-                        << "\nPatient Weight: " << i.getWeight()
-                        << "\nPatient ID number: " << i.getId()
-                        << "\n\n";
-                }
+                menu.print_patient(patientDataBase);
+                
                 break;
             }
+
+            // print patient allergies
             case 6:
             {
-                for (auto& i:patientDataBase) {
-                    std::cout << i.getName() << std::endl;
-                    i.displayAllergies();
-                }
+                menu.print_patient_allegies(patientDataBase);
+
                 break;
             }
+
+            //print patient medications
             case 7:
             {
-                for (auto& i:patientDataBase) {
-                    std::cout << i.getName() << std::endl;
-                    i.displayDailyMeds();
-                }
+                menu.print_patient_medications(patientDataBase);
+
                 break;
             }
 
+            //print everything
+            case 8:
+                menu.print_everything(patientDataBase);
+
+                break;
         }
 
-    }while (choice != 8);
+    }while (choice != 9);
 
-    if (choice == 7)
+    if (choice == 9)
     {
         std::cout << "Program Termninated." << std::endl;
         return 0;

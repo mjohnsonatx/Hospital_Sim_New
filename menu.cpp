@@ -9,6 +9,7 @@
 int Menu::patient_Search( std::vector<Patient>& input) {
 	auto choice = 0;
 	auto index = 0;
+	
 	std::cout << "How would you like to search for the patient?\n"
 		<< "1.) Search by name.\n"
 		<< "2.) Search by DOB.\n"
@@ -291,32 +292,81 @@ void Menu::add_amend_medications(std::vector<Patient>& input) {
 	std::cin >> choice;
 
 	switch (choice) {
-	case 1:
-	{
-		do {
-			answer = ""; // reset answer
-			std::cout << "Medication: ";
-			std::cin >> std::ws >> medication;
+		case 1:
+		{
+			do {
+				answer = ""; // reset answer
+				std::cout << "Medication: ";
+				std::cin >> std::ws >> medication;
 
-			std::cout << "What is the dose? ";
-			getline(std::cin >> std::ws, dosage);
+				std::cout << "What is the dose? ";
+				getline(std::cin >> std::ws, dosage);
 
-			input[index].setDailyMeds(medication, dosage);
+				input[index].setDailyMeds(medication, dosage);
 
-			std::cout << "Are there more medications that need to be added to the list? ";
-			getline(std::cin >> std::ws, answer);
+				std::cout << "Are there more medications that need to be added to the list? ";
+				getline(std::cin >> std::ws, answer);
 
-			if (answer == "yes" || answer == "Yes")
-				more = true;
-			else
-				more = false;
-		} while (more);
+				if (answer == "yes" || answer == "Yes")
+					more = true;
+				else
+					more = false;
+			} while (more);
 
-		break;
-	}
+			break;
+		}
 
-	//case 2:
-	//{
+		case 2:
+		{
+			bool flag = false; 
 
+			do {
+				int choice3 = 0;
+				flag = false;
+				char a; 
+
+				std::cout << "Select the medication to be removed: /n";
+				input[index].displayDailyMeds();
+				std::cin >> choice3;
+
+				input[index].removeDailyMed(choice3);
+				input[index].displayDailyMeds();
+
+				std::cout << "Would you like to remove another medication? (Y or N) /n";
+				std::cin >> a;
+
+				if (a == 'y') flag = true;
+
+			} while (flag);
+
+			break;
+		}
 	}
 }
+
+void Menu::print_patient(std::vector<Patient>& input) {
+	
+	index = patient_Search(input);
+	input[index].displayPatientDemo();
+}
+
+void Menu::print_patient_allegies(std::vector<Patient>& input) {
+	index = patient_Search(input);
+	input[index].displayAllergies();
+}
+
+void Menu::print_patient_medications(std::vector<Patient>& input) {
+	index = patient_Search(input);
+	input[index].displayDailyMeds();
+}
+
+void Menu::print_everything(std::vector<Patient>& input) {
+	for (auto& i : input) {
+		i.displayPatientDemo();
+		i.displayAllergies();
+		i.displayDailyMeds();
+		std::cout << "\n\n";
+	}
+
+}
+

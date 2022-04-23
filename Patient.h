@@ -43,7 +43,7 @@ public:
     void setAllergies(std::string allergy, std::string reaction); 
     void setDailyMeds(std::string dailymed, std::string); 
     void displayAllergies();
-    void displayPatientDemo(std::ostream& out) ; //not defined
+    void displayPatientDemo() ; 
     void displayDailyMeds(); 
     void printName();
     void removeAllergy(int);

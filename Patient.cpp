@@ -108,9 +108,19 @@ void Patient::displayAllergies() {  //should make prettier with setFill
 
     void Patient::removeDailyMed(int a) {
 
-        dailyMeds.erase(dailyMeds.begin() + a - 1);
+        dailyMeds.erase(dailyMeds.begin() + a);
     }
+
     void Patient::printName() { std::cout << name << std::endl; }
-    void Patient::displayPatientDemo(std::ostream & out) {}
+    
+    void Patient::displayPatientDemo() {
+      
+            std::cout 
+                << "Patient Name: " << getName()
+                << "\nPatient Age: " << getAge()
+                << "\nPatient Weight: " << getWeight()
+                << "\nPatient ID number: " << getId()
+                << "\n\n";
+    }
 
    
