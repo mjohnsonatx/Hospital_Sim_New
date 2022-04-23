@@ -5,6 +5,7 @@
 
 #include "Patient.h"
 #include "menu.h"
+#include "File.h"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -19,67 +20,18 @@ int main()
     
     std::vector<Patient> patientDataBase;
     Menu menu;
+    File file;
 
     bool more = false;
 
-    int l, 
-        num_meds = 0, 
-        num_allergies = 0, 
-        choice, 
-        q = 0; // q is a counter for file input
-
+    int l,
+        choice;
     double h;
 
-    
+    std::string path = "patients.txt";
 
-    std::ifstream fin;
-    fin.open("patients.txt");
+    file.fileIO(path, patientDataBase);
 
-    if (!fin)
-        std::cout << "********INPUT FILE FAILED TO OPEN********";
-    else {
-        
-        std::string j, k, m, n, name; // for file input.
-            
-        int id = 0,
-            p = 0;
-           
-        double o = 0.0;
-
-        while (fin >> id) {
-
-            
-
-            Patient newPatient;
-
-            getline(fin >> std::ws, name);
-            fin >> std::ws >> p;
-            fin >> std::ws >> o;
-
-            newPatient.setName(name);
-            newPatient.setId(id);
-            newPatient.setAge(p);
-            newPatient.setWeight(o);
-
-
-            for (int i = 0; i < 2; i++) {
-
-                std::getline(fin >> std::ws, j);
-                std::getline(fin >> std::ws, k);
-
-                newPatient.setAllergies(j, k);
-            }
-            for (int i = 0; i < 2; i++) {
-
-                getline(fin >> std::ws, m);
-                getline(fin >> std::ws, n);
-
-                newPatient.setDailyMeds(m, n);
-            }
-            patientDataBase.push_back(newPatient);
-            ++num_patients;
-        }
-    }
     do {
         std::cout << "Please make a selection: \n"
             << "1. Search for patient.\n"
@@ -123,7 +75,10 @@ int main()
             case 4: //// add functionality for removing meds and ammending meds.
             {
                 
-
+                /// <summary>
+                /// NOT COMPLETED
+                /// </summary>
+                /// <returns></returns>
                 break;
             }
 
@@ -165,6 +120,6 @@ int main()
         std::cout << "Program Termninated." << std::endl;
         return 0;
     }
-    fin.close();
+    
     return 0;
     }
