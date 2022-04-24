@@ -6,7 +6,7 @@
 #include <fstream>
 
 
-std::vector<std::string> File::getMeds(std::string path) {
+std::vector<std::string> File::getMeds(const std::string& path) {
     
     std::vector<std::string> meds;
 
@@ -28,7 +28,7 @@ std::vector<std::string> File::getMeds(std::string path) {
     return meds;
 }
 
-std::vector<std::string> File::getNames(std::string path) {
+std::vector<std::string> File::getNames(const std::string& path) {
     
     std::vector<std::string> names_list;
 

@@ -82,45 +82,51 @@ void Patient::displayAllergies() {  //should make prettier with setFill
     }
 }
 
-    void Patient::displayDailyMeds() {   //should make prettier with setFill
-        if (dailyMeds.size() == 0)
-            std::cout << "No meds reported." << std::endl;
-        else {
-            std::cout << "Daily Medication: " << std::setw(10) << "Dose: " << std::endl;
-                for(auto& i : dailyMeds)
-                std::cout << i.med << std::setw(10) << i.dose << std::endl;
-        }
+void Patient::displayDailyMeds() {   //should make prettier with setFill
+    if (dailyMeds.size() == 0)
+        std::cout << "No meds reported." << std::endl;
+    else {
+        std::cout << "Daily Medication: " << std::setw(10) << "Dose: " << std::endl;
+            for(auto& i : dailyMeds)
+            std::cout << i.med << std::setw(10) << i.dose << std::endl;
     }
+}
 
-    void Patient::removeAllergy(int a ) { 
+void Patient::removeAllergy(int a ) { 
        
-        allergy_list.erase(allergy_list.begin() + a);
-    }
+    allergy_list.erase(allergy_list.begin() + a);
+}
 
-    void Patient::amend_allergy(int itr, std::string substance, std::string reaction) {
+void Patient::amend_allergy(int itr, std::string substance, std::string reaction) {
         
-        if(substance != "no change")
-            allergy_list[itr].substance = substance;
-        if(reaction != "no change")
-            allergy_list[itr].reaction = reaction;
-        displayAllergies();
-    }
-
-    void Patient::removeDailyMed(int a) {
-
-        dailyMeds.erase(dailyMeds.begin() + a);
-    }
-
-    void Patient::printName() { std::cout << name << std::endl; }
     
-    void Patient::displayPatientDemo() {
+    if(substance != "no change")
+        allergy_list[itr].substance == substance;
+    if(reaction != "no change")
+        allergy_list[itr].reaction == reaction;
+    
+    removeAllergy(itr);
+    setAllergies(substance, reaction);
+
+    displayAllergies();
+}
+
+void Patient::removeDailyMed(int a) {
+
+    dailyMeds.erase(dailyMeds.begin() + a);
+}
+
+void Patient::printName() { std::cout << name << std::endl; }
+    
+void Patient::displayPatientDemo() {
       
-            std::cout 
-                << "Patient Name: " << getName()
-                << "\nPatient Age: " << getAge()
-                << "\nPatient Weight: " << getWeight()
-                << "\nPatient ID number: " << getId()
-                << "\n\n";
-    }
+        std::cout 
+            << "Patient Name: " << getName()
+            << "\nPatient Age: " << getAge()
+            << "\nPatient Weight: " << getWeight()
+            << "\nPatient ID number: " << getId()
+            << "\n\n";
+}
+
 
    

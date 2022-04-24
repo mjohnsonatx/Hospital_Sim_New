@@ -57,5 +57,7 @@ public:
     inline int getAllergies_counter()const { return allergies_counter;} 
     inline int getDailyMeds()const { return num_meds; }
     inline int getId() const { return iD; }
+    std::string getAllergy_name(int itr) {return allergy_list[itr].substance;}
+    std::string getAllergy_Reaction(int itr) { return allergy_list[itr].reaction; }
     
 };

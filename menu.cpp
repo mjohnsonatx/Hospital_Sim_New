@@ -13,8 +13,7 @@ int Menu::patient_Search( std::vector<Patient>& input) {
 	std::cout << "How would you like to search for the patient?\n"
 		<< "1.) Search by name.\n"
 		<< "2.) Search by DOB.\n"
-		<< "3.) Search by ID number.\n"
-		<< "4.) Search by display selection.\n";
+		<< "3.) Search by menu display.\n\n"; //***BROKEN***
 	std::cin >> choice;
 
 	switch (choice) {
@@ -256,7 +255,7 @@ void Menu::add_amend_allergies(std::vector<Patient>& input) {
 				std::cout << "Please enter the reaction (if no change write 'no change'): ";
 				getline(std::cin >> std::ws, b);
 
-				input[index].amend_allergy(index, a, b);
+				input[index].amend_allergy(amend, a, b);
 
 				std::cout << "Would you like to amend another allergy? (Y or N) /n";
 				std::cin >> d;

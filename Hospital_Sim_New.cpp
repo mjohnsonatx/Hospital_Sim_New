@@ -19,20 +19,20 @@ int main()
     std::vector<std::string> names_list;
     std::vector<std::string>meds_list;
     std::vector<Patient> patientDataBase;
+    
     Menu menu;
     File file;
     
     auto index = 0,
          choice = 0;
 
-    std::string path = "patients.txt";
-    std::string names_path = "names.txt";
-    std::string meds_file = "medications.txt";
-
+/*
+    const std::string NAMES_PATH = "names.txt";
+    const std::string MEDS_PATH = "medications.txt";
 
     //create list of names and meds
-    names_list=file.getNames(names_path);
-    meds_list = file.getMeds(meds_file);
+    names_list=file.getNames(NAMES_PATH);
+    meds_list = file.getMeds(MEDS_PATH);
 
     //generate random names and push them into the patientDataBase
     int min = 0, max = 1000, max2 = 4;
@@ -43,6 +43,7 @@ int main()
     int counter = 0;
     
     while (counter < 5000) {
+        
         auto random_int = uni(rng);
         std::string space = " ";
         std::string newName_first = names_list[random_int];
@@ -73,9 +74,10 @@ int main()
         patientDataBase.push_back(patient);
         ++counter;  
     } 
-    
-    // create list of patients
-    file.fileIO(path, patientDataBase);
+  */  
+    // create short list of test patients
+    const std::string PATH = "patients.txt";
+    file.fileIO(PATH, patientDataBase);
 
     do {
         std::cout << "Please make a selection: \n"
