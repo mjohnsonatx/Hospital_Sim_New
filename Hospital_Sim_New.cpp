@@ -47,6 +47,8 @@ int main()
     generate.generate_names(not_random_names_list, patientDataBase, NUM_PATIENTS);
     generate.generate_meds(not_random_meds_list, patientDataBase, NUM_PATIENTS);
     generate.generate_allergies(not_random_meds_list, allergies_reactions, patientDataBase, NUM_PATIENTS);
+    generate.generate_dob(patientDataBase, NUM_PATIENTS);
+    generate.generate_weight(patientDataBase, NUM_PATIENTS);
 
    
 

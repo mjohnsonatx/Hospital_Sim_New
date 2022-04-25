@@ -4,6 +4,7 @@
 #include "File.h"
 #include <random>
 #include <string.h>
+#include <iomanip>
 
 
 
@@ -120,7 +121,7 @@ void GenerateDataBase::generate_allergies(const std::vector<std::string>& meds_l
 void GenerateDataBase::generate_dob(std::vector<Patient> & input, const int &NUM_PATIENTS ){
     
     int months[12]{ 1,2,3,4,5,6,7,8,9,10,11,12 },
-        days[31],
+        days[30],
         years[110],
         counter = 0;
 
@@ -128,9 +129,8 @@ void GenerateDataBase::generate_dob(std::vector<Patient> & input, const int &NUM
     for (int i = 0; i < 30; ++i)
         days[i] = i + 1;
 
-    for (int i = 1; i < 109; ++i) {
-        years[i] = 1910;
-        years[i] = years[i] + 1;
+    for (int i = 0; i < 109; ++i) {
+        years[i] = 1910+i;
     }
     
     int min_month = 1, max_month = 12;
@@ -145,16 +145,20 @@ void GenerateDataBase::generate_dob(std::vector<Patient> & input, const int &NUM
         std::uniform_int_distribution<int> uni1(min_month, max_month);
         auto randomMonth = uni1(rng);
         std::string month = std::to_string(months[randomMonth]);
+        
+        if (randomMonth < 9) { month = '0' + month; }
 
         //generate random day
         std::uniform_int_distribution<int> uni2(days_min, days_max);
         auto randomDay = uni2(rng);
         std::string day = std::to_string(days[randomDay]);
 
+        if (randomDay < 9 ) {day = '0' + day;}
+
         //generate random year
         std::uniform_int_distribution<int> uni3(years_min, years_max);
         auto randomYear = uni3(rng);
-        std::string year = std::to_string(days[randomYear]);
+        std::string year = std::to_string(years[randomYear]);
 
         std::string dob = month + "/" + day + "/" + year;
 
@@ -171,7 +175,7 @@ void GenerateDataBase::generate_weight(std::vector<Patient>& input, const int & 
 
     int weight = 0;
 
-    int young_min = 1, young_max = 55;
+    int young_min = 25, young_max = 55;
     int small_human_min = 50, small_human_max = 140;
     int adult_min = 100, adult_max = 450;
     
@@ -181,10 +185,11 @@ void GenerateDataBase::generate_weight(std::vector<Patient>& input, const int & 
         
         std::string original = input[counter].getDOB();
 
-        std::string s2 = original.substr(4, original.size());
+        std::string s2 = original.substr(6, 9);
         int year = atoi(s2.c_str());
 
         int age = 2022 - year;
+        input[counter].setAge(age);
 
         if (age <= 10) {
 
@@ -205,5 +210,7 @@ void GenerateDataBase::generate_weight(std::vector<Patient>& input, const int & 
             auto random_small_human_weight = uni(rng);
             input[counter].setWeight(random_small_human_weight);
         }
+
+        ++counter;
     }
 }
