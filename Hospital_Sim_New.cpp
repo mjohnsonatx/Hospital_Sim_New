@@ -4,8 +4,6 @@
 // The program will be able to sort and search the patients by ID number and name.
 
 #include "Patient.h"
-#include "menu.h"
-#include "File.h"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -13,71 +11,45 @@
 #include <vector>
 #include <algorithm>
 #include <random>
+#include "menu.h"
+#include "File.h"
+#include "GenerateDataBase.h"
 
 int main()
 {
-    std::vector<std::string> names_list;
-    std::vector<std::string>meds_list;
-    std::vector<Patient> patientDataBase;
-    
+    auto const NUM_PATIENTS = 5000;
+
     Menu menu;
     File file;
+    GenerateDataBase generate;
+    
+    std::vector<std::string> not_random_names_list;
+    std::vector<std::string>not_random_meds_list;
+    std::vector<Patient> patientDataBase;
+
+    const std::string NAMES_PATH = "names.txt";
+    const std::string MEDS_PATH = "medications.txt"; 
+    
+     //create list of names and meds
+    not_random_names_list=file.getNames(NAMES_PATH);
+    not_random_meds_list = file.getMeds(MEDS_PATH);
     
     auto index = 0,
          choice = 0;
 
+    patientDataBase = generate.initialize_patient_vector(NUM_PATIENTS);
 
-    const std::string NAMES_PATH = "names.txt";
-    const std::string MEDS_PATH = "medications.txt";
+    generate.generate_names(not_random_names_list, patientDataBase, NUM_PATIENTS);
+    generate.generate_meds(not_random_meds_list, patientDataBase, NUM_PATIENTS); 
 
-    //create list of names and meds
-    names_list=file.getNames(NAMES_PATH);
-    meds_list = file.getMeds(MEDS_PATH);
+   
 
     //generate random names and push them into the patientDataBase
-    int min = 0, max = 1000, max2 = 4;
-
-    std::random_device rd;
-    std::mt19937 rng(rd());
-    std::uniform_int_distribution<int> uni(min, max);
-    int counter = 0;
     
-    while (counter < 5000) {
-        
-        auto random_int = uni(rng);
-        std::string space = " ";
-        std::string newName_first = names_list[random_int];
-
-        random_int = uni(rng);
-        std::string newName_last = names_list[random_int];
-        std::string newName = newName_first + space + newName_last;
-        //std::cout << newName << "  ";
-
-        Patient patient;
-        patient.setName(newName_first, newName_last);
-
-        // make random number of meds per patient
-        std::uniform_int_distribution<int> uni(min, max2);
-        auto random_num_meds = uni(rng);
-        
-        while (random_num_meds != 0) {
-            
-            int max3 = 30;
-            std::uniform_int_distribution<int> uni(min, max3);
-            auto random_med = uni(rng);
-            
-            std::string patient_meds = meds_list[random_med];
-            
-            patient.setDailyMeds(patient_meds, "");
-            --random_num_meds;
-        }
-        patientDataBase.push_back(patient);
-        ++counter;  
-    } 
   
-    // create short list of test patients
-    const std::string PATH = "patients.txt";
-    file.fileIO(PATH, patientDataBase);
+    ////// create short list of test patients
+    //const std::string PATH = "patients.txt";
+    //file.fileIO(PATH, patientDataBase);
 
     do {
         std::cout << "Please make a selection: \n"
