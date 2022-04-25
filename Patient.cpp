@@ -4,7 +4,8 @@
 #include <vector>
 
 Patient::Patient() {
-    name = "Jane Doe";
+    first_name = "Jane";
+    last_name = "Doe"; 
     age = 0;
     weight_lbs = 220.0;
     iD = 000;
@@ -13,8 +14,9 @@ Patient::Patient() {
     std::vector<DailyMeds> dailyMeds;
 }
 
-Patient::Patient(std::string n, int a, double w, int d, std::string x) {
-    name = n;
+Patient::Patient(std::string first, std::string last, int a, double w, int d, std::string x){
+    first_name = first;
+    last_name = last;
     age = a;
     weight_lbs = w;
     iD = d;
@@ -27,8 +29,9 @@ void Patient::setWeight(double w) {
     weight_lbs = w;
 }
 
-void Patient::setName(std::string n) {
-    name = n;
+void Patient::setName(std::string first, std::string last ) {
+    first_name = first;
+    last_name = last;
 }
 
 void Patient::setAge(int a) {
@@ -116,7 +119,7 @@ void Patient::removeDailyMed(int a) {
     dailyMeds.erase(dailyMeds.begin() + a);
 }
 
-void Patient::printName() { std::cout << name << std::endl; }
+
     
 void Patient::displayPatientDemo() {
       

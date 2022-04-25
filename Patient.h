@@ -17,7 +17,8 @@ struct DailyMeds {
 class Patient {
 
 private:
-    std::string name;
+    std::string first_name;
+    std::string last_name;
     std::string DOB;
     
     int age = 0,
@@ -26,16 +27,15 @@ private:
         num_meds = 0;
     
     double weight_lbs=0;
-   
-    
-public:
-    
+
     std::vector<Allergies> allergy_list;
     std::vector<DailyMeds> dailyMeds;
     
+public:
+      
     Patient();
-    Patient(std::string, int, double, int, std::string);
-    void setName(std::string);
+    Patient(std::string, std::string, int, double, int, std::string);
+    void setName(std::string, std::string);
     void setWeight(double);
     void setAge(int);
     void setId(int);
@@ -50,7 +50,7 @@ public:
     void removeDailyMed(int);
     void amend_allergy(int, std::string sub, std::string reaction);
 
-    inline std::string getName()const { return name; }
+    inline std::string getName()const { std::string space = " "; return first_name + space + last_name; }
     inline std::string getDOB()const { return DOB; }
     inline double getWeight()const { return weight_lbs; }
     inline int getAge()const { return age; }

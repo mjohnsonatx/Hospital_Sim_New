@@ -99,16 +99,27 @@ int Menu::patient_Search( std::vector<Patient>& input) {
 
 void Menu::add_Patient(std::vector<Patient>& input) {
 	
-	std::string n, answer, dob, a, b;
+	std::string n,
+		answer,
+		dob,
+		a,
+		b,
+		f_n,
+		l_n;
+	
 	double h = 0;
 	int l = 0, i = 0;
 	bool more = false;
+	
 	do
 	{
 		Patient newPatient;
 
-		std::cout << "Enter the patients name: \n";
-		getline(std::cin >> std::ws, n);
+		std::cout << "Enter the patients first name: \n";
+		getline(std::cin >> std::ws, f_n);
+
+		std::cout << "Enter the patients last name: \n";
+		getline(std::cin >> std::ws, l_n);
 
 		std::cout << "Enter the patient's age: \n";
 		std::cin >> std::ws >> l;
@@ -147,7 +158,7 @@ void Menu::add_Patient(std::vector<Patient>& input) {
 
 		newPatient.setWeight(h);
 		newPatient.setAge(l);
-		newPatient.setName(n);
+		newPatient.setName(f_n, l_n);
 		newPatient.setId(i);
 		newPatient.setDOB(dob);
 

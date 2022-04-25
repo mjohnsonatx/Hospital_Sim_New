@@ -26,7 +26,7 @@ int main()
     auto index = 0,
          choice = 0;
 
-/*
+
     const std::string NAMES_PATH = "names.txt";
     const std::string MEDS_PATH = "medications.txt";
 
@@ -54,7 +54,7 @@ int main()
         //std::cout << newName << "  ";
 
         Patient patient;
-        patient.setName(newName);
+        patient.setName(newName_first, newName_last);
 
         // make random number of meds per patient
         std::uniform_int_distribution<int> uni(min, max2);
@@ -74,7 +74,7 @@ int main()
         patientDataBase.push_back(patient);
         ++counter;  
     } 
-  */  
+  
     // create short list of test patients
     const std::string PATH = "patients.txt";
     file.fileIO(PATH, patientDataBase);

@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="File.cpp" />
+    <ClCompile Include="GenerateDataBase.cpp" />
     <ClCompile Include="Hospital_Sim_New.cpp" />
     <ClCompile Include="Patient.cpp" />
     <ClCompile Include="menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File.h" />
+    <ClInclude Include="GenerateDataBase.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="Patient.h" />

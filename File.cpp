@@ -59,11 +59,16 @@ void File::fileIO(std::string path, std::vector<Patient>& input ) {
     else {
 
         // variables for file input.
+        
+        Patient newPatient;
+        
         std::string 
             allergy, 
             reaction, 
             medication, 
             dosage, 
+            first_name,
+            last_name,
             name;
 
         int id = 0,
@@ -71,15 +76,24 @@ void File::fileIO(std::string path, std::vector<Patient>& input ) {
 
         double weight = 0.0;
 
+        
+        
         while (fin >> id) {
 
-            Patient newPatient;
-
             getline(fin >> std::ws, name);
+            
+            // parse the name into first and last name
+            auto pos = 0;
+            std::string delimiter = " ";
+            pos = name.find(delimiter);
+            first_name = name.substr(0, pos);
+            last_name = name.substr((pos + 1), name.size());
+            
             fin >> std::ws >> age;
-            fin >> std::ws >> weight;
+            fin >> std::ws >> weight;    
+            }
 
-            newPatient.setName(name);
+            newPatient.setName(first_name, last_name);
             newPatient.setId(id);
             newPatient.setAge(age);
             newPatient.setWeight(weight);
@@ -101,6 +115,5 @@ void File::fileIO(std::string path, std::vector<Patient>& input ) {
             }
             input.push_back(newPatient);
         }
-    }
     fin.close();
 }
