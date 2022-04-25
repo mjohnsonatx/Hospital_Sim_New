@@ -8,9 +8,9 @@ class GenerateDataBase
 {
 public:
 	std::vector<Patient> initialize_patient_vector(const int & );
-	void generate_names( const std::vector<std::string>& names, std::vector<Patient>& input, const int &);
-	void generate_meds(const std::vector<std::string>& names, std::vector<Patient>& input, const int&);
-	std::vector<Patient> generate_allergies(std::vector<std::string>& names);
+	void generate_names( const std::vector<std::string>& , std::vector<Patient>& , const int &);
+	void generate_meds(const std::vector<std::string>& , std::vector<Patient>& , const int&);
+	std::vector<Patient> generate_allergies(std::vector<std::string>&, std::vector<std::string> &, std::vector<Patient>& input, const int& NUM_PATIENTS);
 	std::vector<Patient> generate_dob(std::vector<std::string>& names);
 	std::vector<Patient> generate_weight(std::vector<std::string>& names);
 };

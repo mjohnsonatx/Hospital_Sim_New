@@ -14,5 +14,6 @@ public:
 	void fileIO(std::string, std::vector<Patient>&);
 	std::vector<std::string> getNames(const std::string &path);
 	std::vector<std::string> getMeds(const std::string &path);
+	std::vector<std::string> get_Allregic_Reactions(const std::string& path);
 };
 

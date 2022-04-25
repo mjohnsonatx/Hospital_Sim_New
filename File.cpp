@@ -25,6 +25,7 @@ std::vector<std::string> File::getMeds(const std::string& path) {
         }
     }
     fin.close();
+
     return meds;
 }
 
@@ -47,8 +48,33 @@ std::vector<std::string> File::getNames(const std::string& path) {
         }
     }
     fin.close();
+
     return names_list;
 }
+
+std::vector<std::string> get_Allregic_Reactions(const std::string& path) {
+
+    std::vector<std::string> allergic_reaction_list;
+
+    std::ifstream fin;
+    fin.open(path);
+
+    if (!fin)
+        std::cout << "********INPUT FILE FAILED TO OPEN********";
+    else {
+
+        std::string allergy;
+
+        while (fin >> allergy) {
+            getline(fin >> std::ws, allergy);
+            allergic_reaction_list.push_back(allergy);
+        }
+    }
+    fin.close();
+
+    return allergic_reaction_list;
+}
+
 
 void File::fileIO(std::string path, std::vector<Patient>& input ) {
     std::ifstream fin;
