@@ -11,7 +11,7 @@ public:
 	void generate_names( const std::vector<std::string>& , std::vector<Patient>& , const int &);
 	void generate_meds(const std::vector<std::string>& , std::vector<Patient>& , const int&);
 	void generate_allergies(const std::vector<std::string>&, const std::vector<std::string> &, std::vector<Patient>& , const int&);
-	//std::vector<Patient> generate_dob(std::vector<std::string>& names);
+	void generate_dob(std::vector<Patient>&, const int);
 	//std::vector<Patient> generate_weight(std::vector<std::string>& names);
 };
 

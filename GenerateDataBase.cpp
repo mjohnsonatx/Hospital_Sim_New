@@ -116,5 +116,55 @@ void GenerateDataBase::generate_allergies(const std::vector<std::string>& meds_l
     }
 }
 
-//std::vector<Patient> GenerateDataBase::generate_dob(std::vector<std::string>& names, const int& NUM_PATIENTS){}
+void GenerateDataBase::generate_dob(std::vector<Patient> & input, const int NUM_PATIENTS ){
+    
+    int months[12]{ 1,2,3,4,5,6,7,8,9,10,11,12 },
+        days[31],
+        years[110],
+        counter = 0;
+
+     
+    for (int i = 0; i < 30; ++i)
+        days[i] = i + 1;
+
+    for (int i = 1; i < 109; ++i) {
+        years[i] = 1910;
+        years[i] = years[i] + 1;
+    }
+    
+    int min_month = 1, max_month = 12;
+    int days_min = 0, days_max = 30;
+    int years_min = 0, years_max = 109;
+
+    std::random_device rd;
+    std::mt19937 rng(rd());
+    
+    while (counter != NUM_PATIENTS) {
+        //generate random month
+        std::uniform_int_distribution<int> uni1(min_month, max_month);
+        auto randomMonth = uni1(rng);
+        std::string month = std::to_string(months[randomMonth]);
+
+        //generate random day
+        std::uniform_int_distribution<int> uni2(days_min, days_max);
+        auto randomDay = uni2(rng);
+        std::string day = std::to_string(days[randomDay]);
+
+        //generate random year
+        std::uniform_int_distribution<int> uni3(years_min, years_max);
+        auto randomYear = uni3(rng);
+        std::string year = std::to_string(days[randomYear]);
+
+        std::string dob = month + "/" + day + "/" + year;
+
+        input[counter].setDOB(dob);
+
+        ++counter;
+    }
+    
+
+
+
+
+}
 //std::vector<Patient> GenerateDataBase::generate_weight(std::vector<std::string>& names){}

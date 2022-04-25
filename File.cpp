@@ -6,6 +6,7 @@
 #include <fstream>
 
 
+
 void File::file_input(std::ifstream& fin, std::string str, std::vector<std::string>& vec) {
 
     while (fin >> str) {
@@ -22,7 +23,7 @@ std::vector<std::string> File::getMeds(const std::string& path) {
     fin.open(path);
 
     if (!fin)
-        std::cout << "********INPUT FILE FAILED TO OPEN********";
+        std::cout << "********MEDS INPUT FILE FAILED TO OPEN********";
     else {
 
         std::string med;
@@ -44,7 +45,7 @@ std::vector<std::string> File::getNames(const std::string& path) {
     fin.open(path);
 
     if (!fin)
-        std::cout << "********INPUT FILE FAILED TO OPEN********";
+        std::cout << "********NAMES INPUT FILE FAILED TO OPEN********";
     else {
         
         std::string name;
@@ -64,7 +65,7 @@ std::vector<std::string> File::get_Allergic_Reactions(const std::string& path) {
     fin.open(path);
 
     if (!fin)
-        std::cout << "********INPUT FILE FAILED TO OPEN********";
+        std::cout << "********ALLERGIC REACTIONS INPUT FILE FAILED TO OPEN********";
     else {
 
         std::string allergy;
