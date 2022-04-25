@@ -3,6 +3,7 @@
 #include "Patient.h"
 #include "File.h"
 #include <random>
+#include <string.h>
 
 
 
@@ -116,7 +117,7 @@ void GenerateDataBase::generate_allergies(const std::vector<std::string>& meds_l
     }
 }
 
-void GenerateDataBase::generate_dob(std::vector<Patient> & input, const int NUM_PATIENTS ){
+void GenerateDataBase::generate_dob(std::vector<Patient> & input, const int &NUM_PATIENTS ){
     
     int months[12]{ 1,2,3,4,5,6,7,8,9,10,11,12 },
         days[31],
@@ -161,10 +162,48 @@ void GenerateDataBase::generate_dob(std::vector<Patient> & input, const int NUM_
 
         ++counter;
     }
-    
-
-
-
-
 }
-//std::vector<Patient> GenerateDataBase::generate_weight(std::vector<std::string>& names){}
+
+void GenerateDataBase::generate_weight(std::vector<Patient>& input, const int & NUM_PATIENTS){
+    
+    std::random_device rd;
+    std::mt19937 rng(rd());
+
+    int weight = 0;
+
+    int young_min = 1, young_max = 55;
+    int small_human_min = 50, small_human_max = 140;
+    int adult_min = 100, adult_max = 450;
+    
+    auto counter = 0; 
+
+    while ( counter != NUM_PATIENTS) {
+        
+        std::string original = input[counter].getDOB();
+
+        std::string s2 = original.substr(4, original.size());
+        int year = atoi(s2.c_str());
+
+        int age = 2022 - year;
+
+        if (age <= 10) {
+
+            std::uniform_int_distribution<int> uni(young_min, young_max);
+            auto random_young_weight = uni(rng);
+            input[counter].setWeight(random_young_weight);
+        }
+        else if (age <= 20 && age >= 10 ) {
+
+            std::uniform_int_distribution<int> uni(small_human_min, small_human_max);
+            auto random_small_human_weight = uni(rng);
+            input[counter].setWeight(random_small_human_weight);
+        }
+
+        else {
+            
+            std::uniform_int_distribution<int> uni(adult_min, adult_max);
+            auto random_small_human_weight = uni(rng);
+            input[counter].setWeight(random_small_human_weight);
+        }
+    }
+}

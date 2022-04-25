@@ -125,6 +125,7 @@ void Patient::displayPatientDemo() {
       
         std::cout 
             << "Patient Name: " << getName()
+            << "Patient DOB:" << getDOB()
             << "\nPatient Age: " << getAge()
             << "\nPatient Weight: " << getWeight()
             << "\nPatient ID number: " << getId()
