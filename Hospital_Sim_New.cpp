@@ -18,29 +18,35 @@
 int main()
 {
     auto const NUM_PATIENTS = 5000;
-
+    
+    auto index = 0,
+         choice = 0;
+    
     Menu menu;
     File file;
     GenerateDataBase generate;
     
     std::vector<std::string> not_random_names_list;
     std::vector<std::string>not_random_meds_list;
+    std::vector<std::string>allergies_reactions;
     std::vector<Patient> patientDataBase;
 
     const std::string NAMES_PATH = "names.txt";
-    const std::string MEDS_PATH = "medications.txt"; 
+    const std::string MEDS_PATH = "medications.txt";
+    const std::string ALLERGIES_PATH = "allergic_reaction.txt";
     
      //create list of names and meds
     not_random_names_list=file.getNames(NAMES_PATH);
     not_random_meds_list = file.getMeds(MEDS_PATH);
+    allergies_reactions = file.get_Allergic_Reactions(ALLERGIES_PATH);
     
-    auto index = 0,
-         choice = 0;
+   
 
     patientDataBase = generate.initialize_patient_vector(NUM_PATIENTS);
 
     generate.generate_names(not_random_names_list, patientDataBase, NUM_PATIENTS);
-    generate.generate_meds(not_random_meds_list, patientDataBase, NUM_PATIENTS); 
+    generate.generate_meds(not_random_meds_list, patientDataBase, NUM_PATIENTS);
+    generate.generate_allergies(not_random_meds_list, allergies_reactions, patientDataBase, NUM_PATIENTS);
 
    
 

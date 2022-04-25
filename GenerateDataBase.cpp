@@ -79,13 +79,14 @@ void GenerateDataBase::generate_meds(const std::vector<std::string>& meds_list, 
     }
 }
 
-std::vector<Patient> GenerateDataBase::generate_allergies(std::vector<std::string>& meds_list, std::vector<std::string>& allergic_reactions, std::vector<Patient>& input, const int& NUM_PATIENTS){
+void GenerateDataBase::generate_allergies(const std::vector<std::string>& meds_list, const std::vector<std::string>& allergic_reactions, std::vector<Patient>& input, const int& NUM_PATIENTS){
     
     int min = 0, max = 4;
 
     std::random_device rd;
     std::mt19937 rng(rd());
     std::uniform_int_distribution<int> uni(min, max);
+    
     int counter = 0;
 
     while (counter < NUM_PATIENTS) {
@@ -96,12 +97,17 @@ std::vector<Patient> GenerateDataBase::generate_allergies(std::vector<std::strin
 
         while (random_num_meds != 0) {
 
+            int max2 = 9;
             int max3 = 30;
+
             std::uniform_int_distribution<int> uni(min, max3);
             auto random_med = uni(rng);
 
             std::string patient_allergy = meds_list[random_med];
-            std::string reaction = allergic_reactions[random_med];
+            
+            std::uniform_int_distribution<int> uni2(min, max2);
+            auto random_allergy = uni2(rng);
+            std::string reaction = allergic_reactions[random_allergy];
 
             input[counter].setAllergies(patient_allergy, reaction);
             --random_num_meds;

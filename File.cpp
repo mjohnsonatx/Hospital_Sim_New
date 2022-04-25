@@ -6,6 +6,14 @@
 #include <fstream>
 
 
+void File::file_input(std::ifstream& fin, std::string str, std::vector<std::string>& vec) {
+
+    while (fin >> str) {
+        getline(fin >> std::ws, str);
+        vec.push_back(str);
+    }
+}
+
 std::vector<std::string> File::getMeds(const std::string& path) {
     
     std::vector<std::string> meds;
@@ -19,11 +27,10 @@ std::vector<std::string> File::getMeds(const std::string& path) {
 
         std::string med;
 
-        while (fin >> med) {  
-            getline(fin >> std::ws, med);
-            meds.push_back(med);
-        }
+        file_input(fin, med, meds);
+
     }
+    
     fin.close();
 
     return meds;
@@ -42,17 +49,14 @@ std::vector<std::string> File::getNames(const std::string& path) {
         
         std::string name;
 
-        while (fin >> name) {
-            getline(fin >> std::ws, name);
-            names_list.push_back(name);
-        }
+        file_input(fin, name, names_list);
     }
     fin.close();
 
     return names_list;
 }
 
-std::vector<std::string> get_Allregic_Reactions(const std::string& path) {
+std::vector<std::string> File::get_Allergic_Reactions(const std::string& path) {
 
     std::vector<std::string> allergic_reaction_list;
 
@@ -65,11 +69,9 @@ std::vector<std::string> get_Allregic_Reactions(const std::string& path) {
 
         std::string allergy;
 
-        while (fin >> allergy) {
-            getline(fin >> std::ws, allergy);
-            allergic_reaction_list.push_back(allergy);
-        }
+        file_input(fin, allergy, allergic_reaction_list);
     }
+ 
     fin.close();
 
     return allergic_reaction_list;
