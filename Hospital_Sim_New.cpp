@@ -1,5 +1,5 @@
-//Thus far, this is a simple program that contains a class Patient that holds
-// the individuals name, age, weight, home medicine, and allergies.
+//This is a simple program that contains a class Patient that holds
+// an individuals name, age, weight, home medicine, and allergies.
 
 // The program will be able to sort and search the patients by ID number and name.
 
@@ -31,50 +31,35 @@ int main()
     std::vector<std::string>allergies_reactions;
     std::vector<Patient> patientDataBase;
 
+    // file names for name generators.
     const std::string NAMES_PATH = "names.txt";
     const std::string MEDS_PATH = "medications.txt";
     const std::string ALLERGIES_PATH = "allergic_reaction.txt";
     
-     //create list of names and meds
+     //create list of names, meds, and allergic reactions.
     not_random_names_list=file.getNames(NAMES_PATH);
     not_random_meds_list = file.getMeds(MEDS_PATH);
     allergies_reactions = file.get_Allergic_Reactions(ALLERGIES_PATH);
     
-   
-
-    patientDataBase = generate.initialize_patient_vector(NUM_PATIENTS);
-
-    generate.generate_names(not_random_names_list, patientDataBase, NUM_PATIENTS);
-    generate.generate_meds(not_random_meds_list, patientDataBase, NUM_PATIENTS);
-    generate.generate_allergies(not_random_meds_list, allergies_reactions, patientDataBase, NUM_PATIENTS);
-    generate.generate_dob(patientDataBase, NUM_PATIENTS);
-    generate.generate_weight(patientDataBase, NUM_PATIENTS);
-
-   
-
-    //generate random names and push them into the patientDataBase
-    
-  
-    ////// create short list of test patients
-    //const std::string PATH = "patients.txt";
-    //file.fileIO(PATH, patientDataBase);
+    patientDataBase = generate.initialize_patient_vector(not_random_names_list, 
+        not_random_meds_list, allergies_reactions, NUM_PATIENTS);
 
     do {
         std::cout << "Please make a selection: \n"
-            << "1. Search for patient.\n"
-            << "2. Enter new patient demographics.\n"
-            << "3. Add or amend patient allergies.\n"
-            << "4. Add or amend daily medications.\n"
-            << "5. Display patient demographics. \n"
-            << "6. Display patient allergies.\n"
-            << "7. Display home medication(s).\n"
-            << "8. Print everything.\n"
+            << "1.) Search for patient.\n"
+            << "2.) Enter new patient demographics.\n"
+            << "3.) Add or amend patient allergies.\n"
+            << "4.) Add or amend daily medications.\n"
+            << "5.) Display patient demographics. \n"
+            << "6.) Display patient allergies.\n"
+            << "7.) Display home medication(s).\n"
+            << "8.) Print everything.\n"
             << "9.) Exit the program.\n";
         std::cin >> choice;
 
         while (choice < 1 || choice > 8)
         {
-            std::cout << "Please enter 1, 2, 3, 4, 5, 6, or 7: \n";
+            std::cout << "Please enter 1, 2, 3, 4, 5, 6, 7, or 8: \n";
             std::cin >> choice;
         }
 

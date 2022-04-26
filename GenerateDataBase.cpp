@@ -8,20 +8,26 @@
 
 
 
-std::vector<Patient> GenerateDataBase::initialize_patient_vector(const int &NUM_PATIENTS) {
-    std::vector<Patient> patient_data_base;
+std::vector<Patient> GenerateDataBase::initialize_patient_vector(const std::vector<std::string> &not_random_names_list, 
+    const std::vector<std::string> &not_random_meds_list, const std::vector<std::string> &allergies_reactions, const int &NUM_PATIENTS) {
  
+    //initialize NUM_PATIENTS with default constructor
+    std::vector<Patient> input;
     for (int i = 0; i < NUM_PATIENTS; ++i) {
         Patient patient;
-        patient_data_base.push_back(patient);
+        input.push_back(patient);
     }
 
-    return patient_data_base;
+    generate_names(not_random_names_list, input, NUM_PATIENTS);
+    generate_meds(not_random_meds_list, input, NUM_PATIENTS);
+    generate_allergies(not_random_meds_list, allergies_reactions, input, NUM_PATIENTS);
+    generate_dob(input, NUM_PATIENTS);
+    generate_weight(input, NUM_PATIENTS);
+
+    return input;
 }
 
 void GenerateDataBase::generate_names(const std::vector<std::string>& names, std::vector<Patient>&input, const int& NUM_PATIENTS) {
-
-    std::vector<std::string> names_vector;
 
     int min = 0,
         max = 1000;
@@ -45,14 +51,10 @@ void GenerateDataBase::generate_names(const std::vector<std::string>& names, std
         input[counter].setName(newName_first, newName_last);
         ++counter;
     }
-    //return names_vector;
 }
 
 void GenerateDataBase::generate_meds(const std::vector<std::string>& meds_list, std::vector<Patient>& input, const int& NUM_PATIENTS){
-
-    std::vector<Patient> meds_vector;
     
-    //generate random names and push them into the patientDataBase
     int min = 0, max = 4;
 
     std::random_device rd;
@@ -81,26 +83,26 @@ void GenerateDataBase::generate_meds(const std::vector<std::string>& meds_list, 
     }
 }
 
-void GenerateDataBase::generate_allergies(const std::vector<std::string>& meds_list, const std::vector<std::string>& allergic_reactions, std::vector<Patient>& input, const int& NUM_PATIENTS){
+void GenerateDataBase::generate_allergies(const std::vector<std::string>& meds_list, const std::vector<std::string>& allergic_reactions, 
     
-    int min = 0, max = 4;
+    std::vector<Patient>& input, const int& NUM_PATIENTS){
+    
+    int min = 0, max = 4,
+        counter = 0,
+        max2 = 9,
+        max3 = 30;
 
     std::random_device rd;
     std::mt19937 rng(rd());
-    std::uniform_int_distribution<int> uni(min, max);
-    
-    int counter = 0;
 
     while (counter < NUM_PATIENTS) {
-
+            
         // make random number of meds per patient
+        
         std::uniform_int_distribution<int> uni(min, max);
         auto random_num_meds = uni(rng);
 
-        while (random_num_meds != 0) {
-
-            int max2 = 9;
-            int max3 = 30;
+        while (random_num_meds != 0) { 
 
             std::uniform_int_distribution<int> uni(min, max3);
             auto random_med = uni(rng);
@@ -125,22 +127,24 @@ void GenerateDataBase::generate_dob(std::vector<Patient> & input, const int &NUM
         years[110],
         counter = 0;
 
-     
+    // initialze day array. 
     for (int i = 0; i < 30; ++i)
         days[i] = i + 1;
 
+    // initialize year array
     for (int i = 0; i < 109; ++i) {
         years[i] = 1910+i;
     }
     
-    int min_month = 1, max_month = 12;
-    int days_min = 0, days_max = 30;
-    int years_min = 0, years_max = 109;
+    int min_month = 1, max_month = 12,
+        days_min = 0, days_max = 30,
+        years_min = 0, years_max = 109;
 
     std::random_device rd;
     std::mt19937 rng(rd());
-    
+
     while (counter != NUM_PATIENTS) {
+
         //generate random month
         std::uniform_int_distribution<int> uni1(min_month, max_month);
         auto randomMonth = uni1(rng);
@@ -169,19 +173,18 @@ void GenerateDataBase::generate_dob(std::vector<Patient> & input, const int &NUM
 }
 
 void GenerateDataBase::generate_weight(std::vector<Patient>& input, const int & NUM_PATIENTS){
-    
+       
+    auto counter = 0; 
     std::random_device rd;
     std::mt19937 rng(rd());
-
-    int weight = 0;
-
-    int young_min = 25, young_max = 55;
-    int small_human_min = 50, small_human_max = 140;
-    int adult_min = 100, adult_max = 450;
     
-    auto counter = 0; 
+    auto young_min = 25, young_max = 55,
+         small_human_min = 50, small_human_max = 140,
+         adult_min = 100, adult_max = 450;
 
     while ( counter != NUM_PATIENTS) {
+       
+        
         
         std::string original = input[counter].getDOB();
 
@@ -207,10 +210,9 @@ void GenerateDataBase::generate_weight(std::vector<Patient>& input, const int & 
         else {
             
             std::uniform_int_distribution<int> uni(adult_min, adult_max);
-            auto random_small_human_weight = uni(rng);
-            input[counter].setWeight(random_small_human_weight);
+            auto random_human_weight = uni(rng);
+            input[counter].setWeight(random_human_weight);
         }
-
         ++counter;
     }
 }
