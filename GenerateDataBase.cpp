@@ -9,7 +9,7 @@
 
 
 std::vector<Patient> GenerateDataBase::initialize_patient_vector(const std::vector<std::string> &not_random_names_list, 
-    const std::vector<std::string> &not_random_meds_list, const std::vector<std::string> &allergies_reactions, const int &NUM_PATIENTS) {
+    const std::vector<std::string> &not_random_meds_list, const std::vector<std::string> &allergies_reactions, const int &NUM_PATIENTS, std::unordered_map<std::string, Patient> &hashtable) {
  
     //initialize NUM_PATIENTS with default constructor
     std::vector<Patient> input;
@@ -17,13 +17,21 @@ std::vector<Patient> GenerateDataBase::initialize_patient_vector(const std::vect
         Patient patient;
         input.push_back(patient);
     }
-
+    
     generate_names(not_random_names_list, input, NUM_PATIENTS);
     generate_meds(not_random_meds_list, input, NUM_PATIENTS);
     generate_allergies(not_random_meds_list, allergies_reactions, input, NUM_PATIENTS);
     generate_dob(input, NUM_PATIENTS);
     generate_weight(input, NUM_PATIENTS);
 
+    /*
+    for (auto &i : input) {
+        std::string key = i.getDOB(),
+            key2 = i.getName();
+        key = key + key2; 
+        hashtable.insert(key, input[i]);
+    }
+    */
     return input;
 }
 

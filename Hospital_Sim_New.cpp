@@ -14,6 +14,7 @@
 #include "menu.h"
 #include "File.h"
 #include "GenerateDataBase.h"
+#include <unordered_map>
 
 int main()
 {
@@ -30,6 +31,7 @@ int main()
     std::vector<std::string>not_random_meds_list;
     std::vector<std::string>allergies_reactions;
     std::vector<Patient> patientDataBase;
+    std::unordered_map<std::string, Patient> hashtable;
 
     // file names for name generators.
     const std::string NAMES_PATH = "names.txt";
@@ -42,7 +44,16 @@ int main()
     allergies_reactions = file.get_Allergic_Reactions(ALLERGIES_PATH);
     
     patientDataBase = generate.initialize_patient_vector(not_random_names_list, 
-        not_random_meds_list, allergies_reactions, NUM_PATIENTS);
+        not_random_meds_list, allergies_reactions, NUM_PATIENTS, hashtable);
+
+    for (auto& i : patientDataBase) {
+        std::string key = std::to_string(i.getAge());
+        key = key + i.getName() + i.getDOB();
+
+        Patient *p = &i;
+
+        hashtable.insert(key, *p);
+    }
 
     do {
         std::cout << "Please make a selection: \n"
