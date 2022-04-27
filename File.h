@@ -11,6 +11,7 @@
 class File
 {
 public:
+	void print_warning();
 	void file_input(std::ifstream& fin, std::string str, std::vector<std::string>& vec);
 	void fileIO(std::string, std::vector<Patient>&);
 	std::vector<std::string> getNames(const std::string &path);

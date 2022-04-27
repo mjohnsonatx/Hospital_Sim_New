@@ -9,7 +9,7 @@
 
 
 std::vector<Patient> GenerateDataBase::initialize_patient_vector(const std::vector<std::string> &not_random_names_list, 
-    const std::vector<std::string> &not_random_meds_list, const std::vector<std::string> &allergies_reactions, const int &NUM_PATIENTS, std::unordered_map<std::string, Patient> &hashtable) {
+    const std::vector<std::string> &not_random_meds_list, const std::vector<std::string> &allergies_reactions, const int &NUM_PATIENTS) {
  
     //initialize NUM_PATIENTS with default constructor
     std::vector<Patient> input;
@@ -78,7 +78,7 @@ void GenerateDataBase::generate_meds(const std::vector<std::string>& meds_list, 
 
         while (random_num_meds != 0) {
 
-            int max3 = 30;
+            int max3 = 22;
             std::uniform_int_distribution<int> uni(min, max3);
             auto random_med = uni(rng);
 
@@ -97,8 +97,8 @@ void GenerateDataBase::generate_allergies(const std::vector<std::string>& meds_l
     
     int min = 0, max = 4,
         counter = 0,
-        max2 = 9,
-        max3 = 30;
+        max2 = 7,
+        max3 = 22;
 
     std::random_device rd;
     std::mt19937 rng(rd());

@@ -1,44 +1,34 @@
 alprazolam 
-alprazolam ext-release
 buspirone
-DIAZEPAM oral soln
-diazepam tabs 
-hydroxyzine hcl
-hydroxyzine pamoate
+DIAZEPAM 
+diazepam 
+hydroxyzine 
 Vistaril
-lorazepam
 lorazepam
 amitriptyline
 bupropion
-bupropion ext-release
+bupropion 
 citalopram
 clomipramine 
 desipramine 
 doxepin
 escitalopram 
 fluoxetine
-fluvoxamine tabs
-imipramine hcl 
+fluvoxamine 
+imipramine 
 mirtazapine
-nortriptyline cap
-paroxetine hcl
+nortriptyline 
 paroxetine hcl
 phenelzine
 sertraline
 tranylcypromine
 trazodone
-venlafaxine
-venlafaxine
-venlafaxine ext-release tab
+venlafaxine 
 chlorpromazine
 clozapine
-FLUPHENAZINE HCL oral 
-fluphenazine hcl tab
-haloperidol decanoate
-haloperidol lactate oral soln
-haloperidol tabs
-lithium carbonate
-lithium carbonate ext-release
+FLUPHENAZINE 
+haloperidol 
+lithium 
 loxapine
 olanzapine
 perphenazine

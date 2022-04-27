@@ -4,21 +4,17 @@
 // The program will be able to sort and search the patients by ID number and name.
 
 #include "Patient.h"
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include "string"
-#include <vector>
-#include <algorithm>
-#include <random>
 #include "menu.h"
-#include "File.h"
 #include "GenerateDataBase.h"
+#include "File.h"
 #include <unordered_map>
+#include <vector>
+#include <iostream>
+#include "string"
 
 int main()
 {
-    auto const NUM_PATIENTS = 5000;
+    auto const NUM_PATIENTS = 100;
     
     auto index = 0,
          choice = 0;
@@ -27,9 +23,6 @@ int main()
     File file;
     GenerateDataBase generate;
     
-    std::vector<std::string> not_random_names_list;
-    std::vector<std::string>not_random_meds_list;
-    std::vector<std::string>allergies_reactions;
     std::vector<Patient> patientDataBase;
     std::unordered_map<std::string, Patient> hashtable;
 
@@ -39,20 +32,19 @@ int main()
     const std::string ALLERGIES_PATH = "allergic_reaction.txt";
     
      //create list of names, meds, and allergic reactions.
-    not_random_names_list=file.getNames(NAMES_PATH);
-    not_random_meds_list = file.getMeds(MEDS_PATH);
-    allergies_reactions = file.get_Allergic_Reactions(ALLERGIES_PATH);
+    std::vector<std::string>not_random_names_list = file.getNames(NAMES_PATH);
+    std::vector<std::string>not_random_meds_list = file.getMeds(MEDS_PATH);
+    std::vector<std::string>allergies_reactions = file.get_Allergic_Reactions(ALLERGIES_PATH);
     
     patientDataBase = generate.initialize_patient_vector(not_random_names_list, 
-        not_random_meds_list, allergies_reactions, NUM_PATIENTS, hashtable);
+        not_random_meds_list, allergies_reactions, NUM_PATIENTS);
 
     for (auto& i : patientDataBase) {
         std::string key = std::to_string(i.getAge());
         key = key + i.getName() + i.getDOB();
 
-        Patient *p = &i;
-
-        hashtable.insert(key, *p);
+        Patient p = i;
+        hashtable.insert(std::make_pair(key, p));
     }
 
     do {

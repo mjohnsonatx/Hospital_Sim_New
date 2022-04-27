@@ -75,13 +75,14 @@ void Patient::displayAllergies() {  //should make prettier with setFill
         << " which causes " << allergy_list[0].reaction << std::endl;
     else {
          std::cout << "The patient has " << allergy_list.size() << " allergies." << std::endl;
-         std::cout << "Allergy:" << std::setw(15) << "Reaction:" << std::endl;
+         
          for(auto& i : allergy_list)
          {
-             std::cout << "Allergy " << counter  << " " << i.substance << std::setw(15)
-                 << i.reaction << std::endl;
+             std::cout << "\nAllergy " << counter+1 << ": " << i.substance << "\n" << 
+                          "Reaction: " << i.reaction << "\n\n";
              ++counter;
          }
+         std::cout << "\n";
     }
 }
 

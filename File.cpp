@@ -15,6 +15,10 @@ void File::file_input(std::ifstream& fin, std::string str, std::vector<std::stri
     }
 }
 
+void File::print_warning() {
+    std::cout << "********INPUT FILE FAILED TO OPEN********\n\n"; 
+}
+
 std::vector<std::string> File::getMeds(const std::string& path) {
     
     std::vector<std::string> meds;
@@ -23,7 +27,7 @@ std::vector<std::string> File::getMeds(const std::string& path) {
     fin.open(path);
 
     if (!fin)
-        std::cout << "********MEDS INPUT FILE FAILED TO OPEN********";
+        print_warning();
     else {
 
         std::string med;
@@ -45,7 +49,7 @@ std::vector<std::string> File::getNames(const std::string& path) {
     fin.open(path);
 
     if (!fin)
-        std::cout << "********NAMES INPUT FILE FAILED TO OPEN********";
+        print_warning();
     else {
         
         std::string name;
@@ -65,7 +69,7 @@ std::vector<std::string> File::get_Allergic_Reactions(const std::string& path) {
     fin.open(path);
 
     if (!fin)
-        std::cout << "********ALLERGIC REACTIONS INPUT FILE FAILED TO OPEN********";
+        print_warning();
     else {
 
         std::string allergy;
@@ -84,7 +88,7 @@ void File::fileIO(std::string path, std::vector<Patient>& input ) {
     fin.open(path);
 
     if (!fin)
-        std::cout << "********INPUT FILE FAILED TO OPEN********";
+        print_warning();
     else {
 
         // variables for file input.
