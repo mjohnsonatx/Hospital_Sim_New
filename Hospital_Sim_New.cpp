@@ -39,6 +39,8 @@ int main()
     patientDataBase = generate.initialize_patient_vector(not_random_names_list, 
         not_random_meds_list, allergies_reactions, NUM_PATIENTS);
 
+    
+    // put patient db in hashtable.
     for (auto& i : patientDataBase) {
         std::string key = std::to_string(i.getAge());
         key = key + i.getName() + i.getDOB();
