@@ -4,10 +4,11 @@
 #include "Patient.h"
 #include "File.h"
 #include <unordered_map>
+#include <thread>
 
 class GenerateDataBase
 {
-public:
+public:	
 	std::vector<Patient> initialize_patient_vector(const std::vector<std::string> &,
 		const std::vector<std::string> & ,const std::vector<std::string> &, const int &);
 	void generate_names( const std::vector<std::string>& , std::vector<Patient>& , const int &);

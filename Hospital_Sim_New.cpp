@@ -14,30 +14,30 @@
 
 int main()
 {
-    auto const NUM_PATIENTS = 100;
-    
-    auto index = 0,
-         choice = 0;
-    
+    auto const NUM_PATIENTS{ 100 };
+
+    auto index{ 0 },
+        choice{ 0 };
+
     Menu menu;
     File file;
     GenerateDataBase generate;
-    
+
     std::vector<Patient> patientDataBase;
     std::unordered_map<std::string, Patient> hashtable;
 
     // file names for name generators.
-    const std::string NAMES_PATH = "names.txt";
-    const std::string MEDS_PATH = "medications.txt";
-    const std::string ALLERGIES_PATH = "allergic_reaction.txt";
+    const std::string NAMES_PATH{ "names.txt" };
+    const std::string MEDS_PATH {"medications.txt"};
+    const std::string ALLERGIES_PATH{ "allergic_reaction.txt" };
     
      //create list of names, meds, and allergic reactions.
-    std::vector<std::string>not_random_names_list = file.getNames(NAMES_PATH);
-    std::vector<std::string>not_random_meds_list = file.getMeds(MEDS_PATH);
-    std::vector<std::string>allergies_reactions = file.get_Allergic_Reactions(ALLERGIES_PATH);
+    std::vector<std::string>not_random_names_list { file.getNames(NAMES_PATH) };
+    std::vector<std::string>not_random_meds_list { file.getMeds(MEDS_PATH) };
+    std::vector<std::string>allergies_reactions { file.get_Allergic_Reactions(ALLERGIES_PATH) };
     
-    patientDataBase = generate.initialize_patient_vector(not_random_names_list, 
-        not_random_meds_list, allergies_reactions, NUM_PATIENTS);
+    patientDataBase = generate.initialize_patient_vector(not_random_names_list,
+        not_random_meds_list, allergies_reactions, NUM_PATIENTS) ;
 
     
     // put patient db in hashtable.
@@ -48,6 +48,8 @@ int main()
         Patient p = i;
         hashtable.insert(std::make_pair(key, p));
     }
+
+   
 
     do {
         std::cout << "Please make a selection: \n"
