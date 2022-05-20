@@ -1,4 +1,8 @@
-//This is a simple program that contains a class Patient that holds
+//***************************
+//****  THIS IS MAIN  *******
+//***************************
+
+// This is a simple program that contains a class Patient that holds
 // an individuals name, age, weight, home medicine, and allergies.
 
 // The program will be able to sort and search the patients by ID number and name.
