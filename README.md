@@ -1,5 +1,8 @@
 # Hospital_Sim_New
 
+**I'm currently on hold with this project and studying design principles and patterns. I need to have a better understanding of the intention and design of this application before I can go further.** If you have a critique or comment about the design of this app or the code in genenral please let me know.** 
+
+
 Hello, welcome, thanks for stopping by.
 
 This repo is intended to simulate a rudimentary hospital database that stores a collection of patient objects. Each patient object has the attributes name, age, weight, date of birth, home meds, allergies, and their respective setters and getters.   
